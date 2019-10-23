@@ -5,7 +5,7 @@ import RouteConfig from './RouteConfig';
 import { createStackNavigator } from 'react-navigation-stack';
 
 const AppNavigator = createStackNavigator(RouteConfig, {
-  initialRouteName: 'Home'
+  initialRouteName: 'Login'
 });
 
 export default createAppContainer(AppNavigator);

@@ -3,19 +3,15 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 
-const LoginScreen = () => {
+const ConversationScreen = () =>{
   return(
     <View style={styles.container}>
-      <Text>I am LoginScreen</Text>
+      <Text>I am ConversationScreen</Text>
     </View>
   );
 }
 
-LoginScreen.navigationOptions = {
-  title: 'Login',
-};
-
-export default LoginScreen;
+export default ConversationScreen;
 
 const styles = StyleSheet.create({
   container: {
