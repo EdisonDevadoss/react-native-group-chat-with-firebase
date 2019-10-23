@@ -9,7 +9,13 @@ const CreateGroupScreen = () =>{
       <Text>I am CreateGroupScreen</Text>
     </View>
   );
-}
+};
+
+CreateGroupScreen.navigationOptions = {
+  title: 'Create Group',
+};
+
+
 
 export default CreateGroupScreen;
 

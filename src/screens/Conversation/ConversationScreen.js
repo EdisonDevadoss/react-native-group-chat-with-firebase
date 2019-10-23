@@ -9,7 +9,12 @@ const ConversationScreen = () =>{
       <Text>I am ConversationScreen</Text>
     </View>
   );
-}
+};
+
+ConversationScreen.navigationOptions = {
+  title: 'Conversation',
+};
+
 
 export default ConversationScreen;
 
