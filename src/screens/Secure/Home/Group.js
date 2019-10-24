@@ -22,7 +22,9 @@ const Group = (props) => {
     <View style={styles.scene}>
       {size(userLists) > 0 ? map(userLists, (user)=>{
         return(
-          <TouchableOpacity key={user.key} style={styles.chatCard}>
+          <TouchableOpacity key={user.key} style={styles.chatCard}
+            onPress={()=> props.navigation.push('Conversation')}
+          >
             <Image source={require('../../../images/defaultProfilePic.png')} style={styles.profileImg} />
             <View style={styles.textView}>
               <Text>{user.email}</Text>

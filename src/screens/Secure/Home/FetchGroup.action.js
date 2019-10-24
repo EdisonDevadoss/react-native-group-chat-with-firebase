@@ -2,7 +2,7 @@ import {db} from '../../../firebase';
 
 const fetchGroup = ()=>{
   return new Promise((resolve)=> {
-    db.readGroup().once('value', (snapshot)=>{
+    db.readGroup().on('value', (snapshot)=>{
       const list = [];
       Object.entries(snapshot.val()).map((data) => {
         list.push({

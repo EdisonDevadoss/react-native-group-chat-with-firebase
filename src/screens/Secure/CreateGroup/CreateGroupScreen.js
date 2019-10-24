@@ -5,8 +5,9 @@ import {View, Text, TouchableHighlight, ScrollView, Image, TouchableOpacity} fro
 import t from 'tcomb-form-native';
 import styles from './CreateGroupScreenStyleSheet';
 import fetchUser from '../Home/FetchUser.action';
-import {map, size, find, filter} from 'lodash';
+import {map, size, find, filter } from 'lodash';
 import createGroup from './CreateGroup.action';
+import auth from '@react-native-firebase/auth';
 
 const CreateGroupScreen = (props) =>{
   const form = useRef();
@@ -26,20 +27,26 @@ const CreateGroupScreen = (props) =>{
 
   const onCreate = ()=> {
     const params = form.current.refs.input.getValue();
-    if(params.groupName && size(members) > 0){
-    const groupAttributes = {
-      name: params.groupName,
-      members,
-      createdAt: new Date()
-    }
-    createGroup(groupAttributes).then(()=>{
-      props.navigation.goBack();
-    }).catch(()=>{
-      alert('Sign up failed');
+    let setMembers = {};
+    members.forEach((id) =>{
+      setMembers[id] = true;
     });
-  }else{
-    alert('select user name and mombers')
-  }
+    if(params.groupName && size(members) > 0){
+      const uid = auth().currentUser.uid;
+      const groupAttributes = {
+        name: params.groupName,
+        members: setMembers,
+        adminId: uid,
+        createdAt: new Date()
+      };
+      createGroup(groupAttributes).then(()=>{
+        props.navigation.goBack();
+      }).catch(()=>{
+        alert('Create group failed');
+      });
+    }else{
+      alert('select user name and mombers');
+    }
   };
 
   const onSelectImg =(key)=>{

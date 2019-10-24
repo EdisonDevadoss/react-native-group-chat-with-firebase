@@ -9,7 +9,7 @@ const RouteConfig = {
   Signup:{ screen: SignupScreen },
   Home: { screen: HomeScreen },
   CreateGroup: { screen: CreateGroupScreen },
-  ConversationScreen: {screen: ConversationScreen}
+  Conversation: { screen: ConversationScreen}
 };
 
 export default RouteConfig;
