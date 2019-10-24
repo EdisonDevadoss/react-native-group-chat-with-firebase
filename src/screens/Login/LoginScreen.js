@@ -4,6 +4,7 @@ import React, {useRef} from 'react';
 import {View, Text, TouchableHighlight} from 'react-native';
 import t from 'tcomb-form-native';
 import styles from './LoginScreenStyleSheet';
+import onLogin from './Login.action';
 
 const LoginScreen = (props) => {
   const form = useRef();
@@ -26,9 +27,12 @@ const LoginScreen = (props) => {
 
 
   const onSignin=()=>{
-    const value = form.current.refs.input.getValue()
-    console.log('value', value);
-    props.navigation.push('Home')
+    const parmas = form.current.refs.input.getValue()
+    onLogin(parmas).then(()=>{
+      props.navigation.push('Home');
+    }).catch(()=>{
+      alert('Email or passwod wrong');
+    });
   };
 
   return(
