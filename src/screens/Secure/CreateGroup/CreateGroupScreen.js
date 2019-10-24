@@ -32,8 +32,7 @@ const CreateGroupScreen = (props) =>{
       members,
       createdAt: new Date()
     }
-    createGroup(groupAttributes).then((user)=>{
-      console.log('user is', user);
+    createGroup(groupAttributes).then(()=>{
       props.navigation.goBack();
     }).catch(()=>{
       alert('Sign up failed');
@@ -65,9 +64,9 @@ const CreateGroupScreen = (props) =>{
         {size(userLists) > 0 ? map(userLists, (user)=>{
           return(
             <TouchableOpacity key={user.key} style={styles.chatCard} onPress={()=> onSelectImg(user.key)}>
-              <Image source={require('../../images/defaultProfilePic.png')} style={styles.profileImg} />
+              <Image source={require('../../../images/defaultProfilePic.png')} style={styles.profileImg} />
               {isSelected(user.key) && (
-                <Image source={require('../../images/i-check.png')} style={styles.selectedIcon} />
+                <Image source={require('../../../images/i-check.png')} style={styles.selectedIcon} />
               )}
               <View style={styles.textView}>
                 <Text>{user.email}</Text>

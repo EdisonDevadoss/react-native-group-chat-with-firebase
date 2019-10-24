@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import AppStyles from '../../styles/AppStyles';
+import AppStyles from '../../../styles/AppStyles';
 
 const styles = StyleSheet.create({
   ...AppStyles,

@@ -28,9 +28,7 @@ const SignupScreen = (props) =>{
 
   const onSignup = ()=> {
     const params = form.current.refs.input.getValue();
-    console.log('params', params);
-    createUser(params).then((user)=>{
-      console.log('user is', user);
+    createUser(params).then(()=>{
       props.navigation.push('Home');
     }).catch(()=>{
       alert('Sign up failed');

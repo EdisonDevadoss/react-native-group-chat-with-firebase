@@ -1,4 +1,4 @@
-import {db} from '../../firebase';
+import {db} from '../../../firebase';
 import { map } from 'lodash';
 
 const fetchUser = ()=>{

@@ -1,4 +1,4 @@
-import { db } from '../../firebase';
+import { db } from '../../../firebase';
 
 const createUser =(params)=>{
   return new Promise((resolve, reject) => {

@@ -1,4 +1,4 @@
-import AppStyles from '../../styles/AppStyles';
+import AppStyles from '../../../styles/AppStyles';
 import { StyleSheet } from 'react-native';
 
 
