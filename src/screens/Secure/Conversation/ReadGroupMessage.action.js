@@ -1,8 +1,8 @@
-import {db} from '../../../firebase';
+import { db } from '../../../firebase';
 
-const fetchGroup = (userId)=>{
-  return new Promise((resolve)=> {
-    db.readGroup().orderByChild(`members/${userId}`).equalTo(true).once('value', (snapshot)=>{
+const readMessages =(gruopId)=>{
+  return new Promise((resolve) => {
+    db.readGroupMessage(gruopId).on('value', (snapshot)=>{
       const list = [];
       const values = snapshot.val() || [];
       Object.entries(values).map((data) => {
@@ -16,4 +16,4 @@ const fetchGroup = (userId)=>{
   });
 };
 
-export default fetchGroup;
+export default readMessages;

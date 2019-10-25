@@ -14,7 +14,8 @@ class AuthLoadingScreen extends React.Component {
   }
 
   bootstrapAsync = async () => {
-    const uid = auth().currentUser.uid;
+    const currentUser = auth().currentUser;
+    const uid = currentUser && currentUser.uid;
     if (uid) {
       this.props.navigation.navigate('Secure');
     }

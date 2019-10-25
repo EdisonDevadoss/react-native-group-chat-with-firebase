@@ -1,6 +1,7 @@
 const tableNames = {
   users: 'users',
-  groupDetails: 'groupDetails'
+  groupDetails: 'groupDetails',
+  groupMessages: 'groupMessages'
 };
 
 export default tableNames;

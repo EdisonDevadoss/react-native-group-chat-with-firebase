@@ -5,12 +5,15 @@ import styles from './HomeScreenStyleSheet';
 import fetchGroup from './FetchGroup.action';
 import {map, size} from 'lodash';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import auth from '@react-native-firebase/auth';
 
 const Group = (props) => {
-  const [userLists, setUserLists] = useState([]);
+  const [groupLists, setGroupLists] = useState([]);
+  const uid = auth().currentUser.uid;
+
   useEffect(()=>{
-    fetchGroup().then((users)=>{
-      setUserLists(users);
+    fetchGroup(uid).then((users)=>{
+      setGroupLists(users);
     });
   },[]);
 
@@ -18,17 +21,22 @@ const Group = (props) => {
     props.navigation.push('CreateGroup');
   };
 
+const onConversationScreen = (key)=>{
+    props.navigation.push('Conversation', {
+      groupId: key
+    });
+};
   return(
     <View style={styles.scene}>
-      {size(userLists) > 0 ? map(userLists, (user)=>{
+      {size(groupLists) > 0 ? map(groupLists, (group)=>{
         return(
-          <TouchableOpacity key={user.key} style={styles.chatCard}
-            onPress={()=> props.navigation.push('Conversation')}
+          <TouchableOpacity key={group.key} style={styles.chatCard}
+            onPress={()=>onConversationScreen(group.key)}
           >
             <Image source={require('../../../images/defaultProfilePic.png')} style={styles.profileImg} />
             <View style={styles.textView}>
-              <Text>{user.email}</Text>
-              <Text>{user.name}</Text>
+              {/*<Text>{group.email}</Text>*/}
+              <Text>{group.name}</Text>
             </View>
           </TouchableOpacity>
         );
